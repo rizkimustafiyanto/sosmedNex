@@ -42,7 +42,7 @@
 <script>
 import axios from 'axios';
 import { useRouter } from 'vue-router';
-import { mapActions } from 'vuex'; // Import mapActions
+import { mapActions } from 'vuex';
 
 export default {
   name: 'UserLogin',
@@ -64,9 +64,10 @@ export default {
           email: this.email,
           password: this.password,
         });
-        console.log(response.data);
+        console.log(response.data.user);
         localStorage.setItem('token', response.data.token);
-        this.login();
+        localStorage.setItem('userName', response.data.user.name);
+        this.login(response.data.user);
         this.router.push('/timeline');
       } catch (error) {
         console.error('Login failed:', error);

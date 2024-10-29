@@ -2,6 +2,11 @@
     <div id="app" class="container mt-4">
       <header class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="text-dark">Nexmedis Social Media</h1>
+        <strong>
+          <h4>
+            <span v-if="isLoggedIn" class="me-3">{{ userName }}</span>
+          </h4>
+        </strong>
         <button 
           v-if="isLoggedIn" 
           @click="handleLogout" 
@@ -20,11 +25,10 @@
   
   export default {
     computed: {
-      ...mapGetters(['isLoggedIn']),
+      ...mapGetters(['isLoggedIn', 'userName']),
     },
     methods: {
       handleLogout() {
-        localStorage.removeItem('token');
         this.$store.dispatch('logout');
         this.$router.push('/login');
       },

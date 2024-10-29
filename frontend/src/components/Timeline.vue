@@ -65,7 +65,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['isLoggedIn']),
+    ...mapGetters(['isLoggedIn', 'userName']),
   },
   methods: {
     async fetchPosts() {
