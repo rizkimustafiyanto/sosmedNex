@@ -62,7 +62,7 @@ export default {
 
 <style scoped>
 .post-detail {
-  /* Styling untuk layout detail post */
+
 }
 .comments {
   margin-top: 20px;

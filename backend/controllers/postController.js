@@ -1,7 +1,6 @@
 const Post = require("../models/Post");
 const Like = require("../models/Like");
 
-// Menambahkan Post
 const createPost = async (req, res) => {
   const { content, imageUrl } = req.body;
   const userId = req.user.id;
@@ -14,15 +13,12 @@ const createPost = async (req, res) => {
   }
 };
 
-// Mengambil semua Post
 const getPosts = async (req, res) => {
   const userId = req.user.id;
 
   try {
-    // Mengambil semua posts
     const posts = await Post.findAll();
 
-    // Mencari jumlah likes untuk setiap post
     const processedPosts = await Promise.all(
       posts.map(async (post) => {
         const likesCount = await Like.count({
@@ -42,21 +38,20 @@ const getPosts = async (req, res) => {
           id: post.id,
           content: post.content,
           imageUrl: post.imageUrl,
-          likes: likesCount, // Jumlah likes
-          hasLiked: !!hasLiked, // Status like
-          comments: post.comments || [], // Pastikan ini juga dikelola
+          likes: likesCount,
+          hasLiked: !!hasLiked,
+          comments: post.comments || [],
         };
       })
     );
 
-    res.json(processedPosts); // Mengembalikan posts yang sudah diproses
+    res.json(processedPosts);
   } catch (error) {
     console.error("Error fetching posts:", error);
     res.status(500).json({ message: "Error fetching posts", error });
   }
 };
 
-// Mengupdate Post
 const updatePost = async (req, res) => {
   const { id } = req.params;
   const { content, imageUrl } = req.body;
@@ -81,7 +76,6 @@ const updatePost = async (req, res) => {
   }
 };
 
-// Menghapus Post
 const deletePost = async (req, res) => {
   const { id } = req.params;
 

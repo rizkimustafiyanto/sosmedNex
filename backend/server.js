@@ -11,9 +11,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors()); // Mengizinkan permintaan dari berbagai sumber
-app.use(bodyParser.json()); // Untuk parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // Untuk parsing application/x-www-form-urlencoded
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api/posts", postRoutes);
@@ -27,7 +27,7 @@ sequelize
   .authenticate()
   .then(() => {
     console.log("Database connected successfully.");
-    return sequelize.sync(); // Meng-sinkronisasi model dengan database
+    return sequelize.sync();
   })
   .then(() => {
     app.listen(PORT, () => {

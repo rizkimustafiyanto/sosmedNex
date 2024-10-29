@@ -5,7 +5,7 @@ class Post extends Model {
   static associate(models) {
     Post.hasMany(models.Like, {
       foreignKey: "postId",
-      as: "likes", // Alias untuk relasi
+      as: "likes",
     });
   }
 }

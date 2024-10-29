@@ -1,12 +1,10 @@
 const Like = require("../models/Like");
 
-// Menambahkan like
 const addLikes = async (req, res) => {
   const { postId } = req.params;
   const userId = req.user.id;
 
   try {
-    // Mencari atau membuat like jika belum ada
     const [like, created] = await Like.findOrCreate({
       where: { postId, userId },
     });
@@ -21,7 +19,6 @@ const addLikes = async (req, res) => {
   }
 };
 
-// Mendapatkan likes berdasarkan postId
 const getLikes = async (req, res) => {
   const { postId } = req.params;
 
@@ -36,7 +33,6 @@ const getLikes = async (req, res) => {
   }
 };
 
-// Menghapus like
 const deleteLikes = async (req, res) => {
   const { postId } = req.params;
   const userId = req.user.id;

@@ -1,6 +1,5 @@
 const Comment = require("../models/Comment");
 
-// Menambahkan komentar
 const addComment = async (req, res) => {
   const { postId } = req.params;
   const { content } = req.body;
@@ -14,14 +13,13 @@ const addComment = async (req, res) => {
   }
 };
 
-// Mendapatkan komentar berdasarkan postId
 const getComments = async (req, res) => {
   const { postId } = req.params;
 
   try {
     const comments = await Comment.findAll({
       where: { postId },
-      order: [["createdAt", "ASC"]], // Mengurutkan berdasarkan waktu pembuatan
+      order: [["createdAt", "ASC"]],
     });
     res.json({ comments });
   } catch (error) {
@@ -29,7 +27,6 @@ const getComments = async (req, res) => {
   }
 };
 
-// Menghapus komentar
 const deleteComment = async (req, res) => {
   const { id } = req.params;
 

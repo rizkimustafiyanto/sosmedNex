@@ -26,7 +26,7 @@ const Like = sequelize.define(
 Like.associate = (models) => {
   Like.belongsTo(models.Post, {
     foreignKey: "postId",
-    as: "post", // Alias untuk relasi
+    as: "post",
   });
 };
 
