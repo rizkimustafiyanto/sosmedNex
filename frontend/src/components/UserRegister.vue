@@ -78,10 +78,11 @@ export default {
         });
         this.message = response.data.message;
        
-        localStorage.setItem('token', response.data.token);
-        this.login();
+        
+        // localStorage.setItem('token', response.data.token);
+        // this.login();
        
-        this.router.push('/timeline');
+        // this.router.push('/timeline');
       } catch (error) {
         if (error.response && error.response.data && error.response.data.message) {
           this.message = error.response.data.message;

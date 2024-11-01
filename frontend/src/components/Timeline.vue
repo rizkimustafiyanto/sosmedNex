@@ -101,6 +101,7 @@ export default {
         this.posts.unshift(response.data.post);
         this.newPostContent = '';
         this.newPostImageUrl = '';
+        window.location.reload();
       } catch (error) {
         console.error('Error creating post:', error);
       }
